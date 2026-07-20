@@ -1,0 +1,11 @@
+{
+  "name": "@fhbf/database",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@prisma/client": "latest"
+  },
+  "devDependencies": {
+    "prisma": "latest"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "core": [
+    "users",
+    "roles",
+    "permissions",
+    "chapters",
+    "audit_logs"
+  ],
+  "membership": [
+    "membership_types",
+    "membership_applications",
+    "memberships",
+    "membership_cards",
+    "membership_renewals",
+    "membership_payments"
+  ],
+  "directory": [
+    "businesses",
+    "business_categories",
+    "business_services",
+    "business_products",
+    "business_reviews",
+    "business_enquiries"
+  ],
+  "village": [
+    "business_villages",
+    "village_zones",
+    "village_stands",
+    "stand_bookings",
+    "exhibitors",
+    "sponsors"
+  ],
+  "events": [
+    "events",
+    "event_tickets",
+    "event_registrations",
+    "event_attendance"
+  ],
+  "opportunities": [
+    "opportunities",
+    "jobs",
+    "tenders",
+    "partnerships",
+    "investment_requests"
+  ]
+}

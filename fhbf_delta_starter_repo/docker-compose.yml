@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: fhbf_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fhbf
+      POSTGRES_PASSWORD: fhbf_password_change_me
+      POSTGRES_DB: fhbf_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - fhbf_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  fhbf_postgres_data:

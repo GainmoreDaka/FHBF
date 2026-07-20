@@ -1,0 +1,256 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum Role {
+  VISITOR
+  APPLICANT
+  MEMBER
+  BUSINESS_MEMBER
+  CORPORATE_PARTNER
+  SPONSOR
+  EVENT_ADMIN
+  CHAPTER_ADMIN
+  SUPER_ADMIN
+}
+
+enum Status {
+  PENDING
+  ACTIVE
+  APPROVED
+  REJECTED
+  SUSPENDED
+  EXPIRED
+}
+
+enum PaymentStatus {
+  PENDING
+  UNDER_REVIEW
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  role      Role     @default(VISITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships Membership[]
+  applications MembershipApplication[]
+  businesses Business[]
+  payments Payment[]
+}
+
+model MembershipType {
+  id          String @id @default(cuid())
+  name        String
+  slug        String @unique
+  annualFee   Int
+  description String?
+  benefits    String[]
+  active      Boolean @default(true)
+}
+
+model MembershipApplication {
+  id             String @id @default(cuid())
+  userId         String
+  membershipType String
+  businessName   String?
+  industry       String?
+  sevenMountain  String?
+  province       String?
+  country        String?
+  goals          String?
+  paymentRef     String?
+  proofUrl       String?
+  status         Status @default(PENDING)
+  createdAt      DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Membership {
+  id               String @id @default(cuid())
+  userId           String
+  membershipNumber String @unique
+  type             String
+  status           Status @default(ACTIVE)
+  startDate        DateTime
+  expiryDate       DateTime
+  cardQrValue      String?
+  createdAt        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Business {
+  id            String @id @default(cuid())
+  ownerId       String
+  name          String
+  slug          String @unique
+  category      String
+  sevenMountain String?
+  description   String?
+  services      String[]
+  products      String[]
+  city          String?
+  province      String?
+  country       String?
+  website       String?
+  whatsapp      String?
+  email         String?
+  logoUrl       String?
+  coverUrl      String?
+  verified      Boolean @default(false)
+  featured      Boolean @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  owner User @relation(fields: [ownerId], references: [id])
+  enquiries BusinessEnquiry[]
+}
+
+model BusinessEnquiry {
+  id         String @id @default(cuid())
+  businessId String
+  name       String
+  email      String?
+  phone      String?
+  message    String
+  createdAt  DateTime @default(now())
+
+  business Business @relation(fields: [businessId], references: [id])
+}
+
+model Event {
+  id          String @id @default(cuid())
+  title       String
+  slug        String @unique
+  type        String
+  venue       String?
+  startsAt    DateTime
+  endsAt      DateTime?
+  description String?
+  priceMember Int @default(0)
+  priceNonMember Int @default(0)
+  active      Boolean @default(true)
+
+  registrations EventRegistration[]
+}
+
+model EventRegistration {
+  id        String @id @default(cuid())
+  eventId   String
+  userId    String?
+  name      String
+  email     String?
+  phone     String?
+  qrValue   String?
+  checkedIn Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id])
+}
+
+model Village {
+  id          String @id @default(cuid())
+  name        String
+  year        Int
+  venue       String
+  startsAt    DateTime
+  endsAt      DateTime
+  active      Boolean @default(true)
+
+  stands VillageStand[]
+}
+
+model VillageStand {
+  id             String @id @default(cuid())
+  villageId      String
+  standNumber    String
+  standType      String
+  zone           String?
+  priceMember    Int
+  priceNonMember Int
+  status         String @default("AVAILABLE")
+
+  village Village @relation(fields: [villageId], references: [id])
+  bookings VillageBooking[]
+}
+
+model VillageBooking {
+  id             String @id @default(cuid())
+  standId        String
+  applicantName  String
+  businessName   String
+  email          String?
+  phone          String?
+  isMember       Boolean @default(false)
+  membershipNo   String?
+  amountDue      Int
+  paymentStatus  PaymentStatus @default(PENDING)
+  status         Status @default(PENDING)
+  createdAt      DateTime @default(now())
+
+  stand VillageStand @relation(fields: [standId], references: [id])
+}
+
+model Payment {
+  id          String @id @default(cuid())
+  userId      String?
+  purpose     String
+  amount      Int
+  currency    String @default("USD")
+  method      String
+  reference   String?
+  proofUrl    String?
+  status      PaymentStatus @default(PENDING)
+  createdAt   DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+}
+
+model Opportunity {
+  id          String @id @default(cuid())
+  title       String
+  type        String
+  description String
+  location    String?
+  deadline    DateTime?
+  postedBy    String?
+  active      Boolean @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model MarketplaceListing {
+  id          String @id @default(cuid())
+  title       String
+  category    String
+  description String
+  price       Int?
+  contact     String?
+  active      Boolean @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model TradeMission {
+  id          String @id @default(cuid())
+  destination String
+  focus       String
+  startsAt    DateTime
+  endsAt      DateTime?
+  priceMember Int
+  priceNonMember Int
+  description String?
+  active      Boolean @default(true)
+}

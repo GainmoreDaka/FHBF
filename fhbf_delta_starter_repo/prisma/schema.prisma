@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  VISITOR
+  APPLICANT
+  MEMBER
+  BUSINESS_MEMBER
+  CORPORATE_PARTNER
+  SPONSOR
+  EVENT_ADMIN
+  CHAPTER_ADMIN
+  SUPER_ADMIN
+}
+
+enum MembershipStatus {
+  PENDING
+  ACTIVE
+  EXPIRED
+  SUSPENDED
+  REJECTED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  role      UserRole @default(VISITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships Membership[]
+  businesses  Business[]
+}
+
+model Membership {
+  id               String           @id @default(cuid())
+  userId           String
+  type             String
+  membershipNumber String?          @unique
+  status           MembershipStatus @default(PENDING)
+  startDate        DateTime?
+  expiryDate       DateTime?
+  paymentStatus    PaymentStatus    @default(PENDING)
+  createdAt        DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Business {
+  id          String   @id @default(cuid())
+  ownerId     String
+  name        String
+  slug        String   @unique
+  category    String
+  sevenMountain String?
+  description String?
+  city        String?
+  country     String?
+  website     String?
+  whatsapp    String?
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner User @relation(fields: [ownerId], references: [id])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  type        String
+  venue       String?
+  startsAt    DateTime
+  endsAt      DateTime?
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model VillageStand {
+  id             String @id @default(cuid())
+  standNumber    String @unique
+  standType      String
+  priceMember    Int
+  priceNonMember Int
+  status         String @default("AVAILABLE")
+}
+
+model Opportunity {
+  id          String   @id @default(cuid())
+  title       String
+  type        String
+  description String
+  createdAt   DateTime @default(now())
+}
