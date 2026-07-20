@@ -1,0 +1,30 @@
+FAITH HEIGHTS - COMPLETE ONE.COM DEPLOYMENT
+
+Configured for https://faithworldministries.org/faith_heights/ with the public
+site, database forms, member portal, admin portal, password reset, settings,
+fees, applications, bookings, sponsors, messages, users and role permissions.
+
+BEFORE UPLOAD
+1. Back up the current /faith_heights/ folder and database.
+2. In includes/config.php enter the One.com DB name, username and password.
+3. Replace SETUP_KEY with a private random phrase of at least 24 characters.
+
+INSTALL
+1. Upload the CONTENTS of this ZIP into /faith_heights/ and overwrite files.
+2. Import database/install.sql for a new database, or database/upgrade-v2.sql
+   for an existing v1 FHBF database.
+3. Visit /faith_heights/create-admin.php and create the first administrator.
+4. Immediately delete create-admin.php and the database folder from the server.
+5. Sign in at /faith_heights/admin/login.php and test each assigned role.
+
+ROLES
+super_admin: full access, including users and roles
+admin: general admin, content, fees and operational records
+membership_admin: membership applications
+village_admin: Business Village bookings
+finance_admin: fees and financial views
+content_admin: website settings and content
+member: member dashboard only
+
+The public homepage works before database setup; backend logins and live forms
+require valid database credentials and the SQL import.

@@ -1,0 +1,1 @@
+Edit config.php, import install.sql, run create-admin.php once, delete create-admin.php and database folder, change admin password.

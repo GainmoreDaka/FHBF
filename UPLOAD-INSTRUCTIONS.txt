@@ -1,0 +1,12 @@
+FHBF HOMEPAGE HOTFIX
+
+1. Sign in to the One.com File Manager.
+2. Open the /fhbf/ folder.
+3. Back up the existing index.php file.
+4. Upload the index.php from this package and overwrite the existing file.
+5. Visit https://faithworldministries.org/fhbf/#home and refresh the page.
+
+This restores the public website by using the existing index.html whenever the
+database settings are still placeholders. Database-backed admin, member login,
+and live form storage still require valid One.com MySQL credentials plus the SQL
+upgrade/import.
