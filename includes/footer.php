@@ -1,0 +1,1 @@
+<footer><div><b><?=h(setting('site_name','Faith Heights Business Fellowship'))?></b><br><?=h(setting('footer_tagline','Building Businesses. Developing Leaders. Transforming Nations.'))?></div><div><a href="<?=BASE_URL?>/admin/login.php">Admin Login</a></div></footer><script src="<?=BASE_URL?>/assets/js/main.js"></script></body></html>
