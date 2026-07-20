@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faith Heights Business Fellowship</title>
+<link rel="icon" href="assets/fhbf-logo.jpg" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#1e003c;--purple2:#3d0066;--gold:#d4af37;--dark:#07000e}
+body{font-family:Inter,system-ui,sans-serif;background:#07000e;color:white}.display{font-family:'Playfair Display',serif}
+.gold{color:var(--gold)}.bg-purplex{background:linear-gradient(135deg,#1e003c,#3d0066)}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.25);border-radius:18px}.btn{padding:.85rem 1.25rem;border-radius:.7rem;font-weight:800}.btn-gold{background:var(--gold);color:#1e003c}.btn-line{border:2px solid var(--gold);color:var(--gold)}
+.section{padding:80px 20px}.nav a{cursor:pointer}.hidden-page{display:none}.active-page{display:block}.input{width:100%;padding:12px;border-radius:10px;color:#111}
+</style>
+</head>
+<body>
+<nav class="fixed top-0 inset-x-0 z-50 bg-[#120024]/95 border-b border-[#d4af37]/25 backdrop-blur">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="flex items-center gap-3 cursor-pointer" onclick="show('home')"><img src="assets/fhbf-logo.jpg" class="w-14 h-10 object-cover rounded"><span class="font-extrabold gold">FHBF</span></div>
+    <div class="nav hidden md:flex gap-5 text-sm text-white/80"><a onclick="show('home')">Home</a><a onclick="show('village')">Business Village</a><a onclick="show('membership')">Membership</a><a onclick="show('directory')">Directory</a><a onclick="show('events')">Events</a><a onclick="show('register')">Register</a><a onclick="show('contact')">Contact</a></div>
+    <button onclick="show('register')" class="btn btn-gold text-sm">Register</button>
+  </div>
+</nav>
+<main class="pt-16">
+<section id="home" class="page active-page">
+  <div class="min-h-[720px] grid place-items-center relative overflow-hidden">
+    <img src="assets/flyer.jpg" class="absolute inset-0 w-full h-full object-cover opacity-35">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#1e003c]/95 via-[#3d0066]/75 to-black/90"></div>
+    <div class="relative max-w-6xl mx-auto px-5 text-center">
+      <img src="assets/fhbf-logo.jpg" class="mx-auto w-80 max-w-full rounded-2xl shadow-2xl mb-8 border border-[#d4af37]/40">
+      <p class="gold uppercase tracking-[.35em] text-sm font-bold">Faith Heights Business Fellowship</p>
+      <h1 class="display text-5xl md:text-7xl font-black mt-4">Business Village 2026</h1>
+      <p class="text-2xl mt-4 gold font-bold">More Networking. More Growth. More Opportunities.</p>
+      <p class="max-w-3xl mx-auto mt-5 text-white/85 text-lg">A premium Kingdom business network connecting entrepreneurs, professionals, investors and leaders across the Seven Mountains.</p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8"><button onclick="show('register')" class="btn btn-gold">Register for the Village</button><button onclick="show('membership')" class="btn btn-line">Become a Member</button><button onclick="show('directory')" class="btn btn-line">View Directory</button></div>
+    </div>
+  </div>
+  <div class="section bg-[#0b0015]"><div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-5 text-center"><div class="card p-6"><b class="text-4xl gold">7</b><p>Mountains</p></div><div class="card p-6"><b class="text-4xl gold">10–16</b><p>August 2026</p></div><div class="card p-6"><b class="text-4xl gold">40+</b><p>Business Spaces</p></div><div class="card p-6"><b class="text-4xl gold">1</b><p>Kingdom Vision</p></div></div></div>
+</section>
+<section id="village" class="page hidden-page section bg-purplex">
+  <div class="max-w-6xl mx-auto"><h2 class="display text-4xl gold mb-3">Faith Heights Business Village 2026</h2><p class="text-white/80 mb-8">Cathedral of Faith, 18093 Belvedere Road, Belvedere, Harare • 10–16 August 2026</p>
+  <img src="assets/site-plan.png" class="rounded-2xl border border-[#d4af37]/40 shadow-2xl mb-10 w-full">
+  <div class="grid md:grid-cols-3 gap-5"><div class="card p-6"><h3 class="gold font-bold text-xl">Main Marquee</h3><p>Indoor exhibitors, professional services, finance, education, retail and technology.</p></div><div class="card p-6"><h3 class="gold font-bold text-xl">Outdoor Displays</h3><p>Cars, equipment, agriculture, solar, property and premium marquees.</p></div><div class="card p-6"><h3 class="gold font-bold text-xl">Networking Garden</h3><p>Business introductions, prayer, coffee conversations and partnership meetings.</p></div></div></div>
+</section>
+<section id="membership" class="page hidden-page section bg-[#0b0015]"><div class="max-w-6xl mx-auto"><h2 class="display text-4xl gold text-center mb-10">Membership</h2><div class="grid md:grid-cols-5 gap-4">
+  <div class="card p-5"><h3 class="gold font-bold">Student</h3><p class="text-3xl font-black">$20</p><p>Youth, students and start-ups.</p></div><div class="card p-5"><h3 class="gold font-bold">Entrepreneur</h3><p class="text-3xl font-black">$50</p><p>Small businesses and self-employed.</p></div><div class="card p-5 border-2 border-[#d4af37]"><h3 class="gold font-bold">Professional</h3><p class="text-3xl font-black">$100</p><p>Executives, consultants and specialists.</p></div><div class="card p-5"><h3 class="gold font-bold">Business</h3><p class="text-3xl font-black">$250</p><p>SMEs and established companies.</p></div><div class="card p-5"><h3 class="gold font-bold">Corporate</h3><p class="text-3xl font-black">$500+</p><p>Institutions, banks and sponsors.</p></div>
+  </div></div></section>
+<section id="directory" class="page hidden-page section bg-white text-[#1e003c]"><div class="max-w-6xl mx-auto"><h2 class="display text-4xl mb-8">Business Directory</h2><div class="grid md:grid-cols-3 gap-5" id="dir"></div></div></section>
+<section id="events" class="page hidden-page section bg-purplex"><div class="max-w-5xl mx-auto"><h2 class="display text-4xl gold mb-8">Upcoming Events</h2><div class="grid md:grid-cols-2 gap-5"><div class="card p-6"><h3 class="gold font-bold">Business Village 2026</h3><p>10–16 August 2026 • Cathedral of Faith</p></div><div class="card p-6"><h3 class="gold font-bold">Networking Breakfasts</h3><p>Monthly business connection mornings.</p></div><div class="card p-6"><h3 class="gold font-bold">Investor Connect</h3><p>Pitch and partnership evenings.</p></div><div class="card p-6"><h3 class="gold font-bold">Business Prayer</h3><p>Prayer support for business owners.</p></div></div></div></section>
+<section id="register" class="page hidden-page section bg-white text-[#1e003c]"><div class="max-w-4xl mx-auto"><h2 class="display text-4xl mb-3">Register</h2><p class="mb-8">Use this preview form for exhibitor, sponsor, visitor and membership enquiries.</p><form class="grid md:grid-cols-2 gap-4" onsubmit="event.preventDefault();alert('Preview only: connect this form to Google Sheets, email or database before launch.')"><input class="input" placeholder="Full name"><input class="input" placeholder="Business / Organisation"><input class="input" placeholder="Email"><input class="input" placeholder="Phone / WhatsApp"><select class="input"><option>Exhibitor</option><option>Sponsor</option><option>Visitor</option><option>Member</option></select><input class="input" placeholder="Business category"><textarea class="input md:col-span-2" rows="5" placeholder="Tell us what you need"></textarea><button class="btn btn-gold md:col-span-2">Submit Registration</button></form></div></section>
+<section id="contact" class="page hidden-page section bg-[#0b0015]"><div class="max-w-4xl mx-auto"><h2 class="display text-4xl gold mb-5">Contact</h2><p>Faith Heights Business Fellowship</p><p>Cathedral of Faith, Belvedere, Harare</p><p class="mt-3 text-white/70">Email and WhatsApp details can be added before publication.</p></div></section>
+</main>
+<footer class="bg-black py-8 text-center text-white/60 border-t border-[#d4af37]/20">Faith Heights Business Fellowship • Influencing the Seven Mountains Through Kingdom Enterprise</footer>
+<script>
+function show(id){document.querySelectorAll('.page').forEach(p=>{p.className='page hidden-page'});document.getElementById(id).className='page active-page';scrollTo(0,0)}
+const data=['Agriculture','Automotive','Construction','Education','Finance & Insurance','Health & Wellness','Property','Solar & Energy','Technology'];
+document.getElementById('dir').innerHTML=data.map(x=>`<div class="p-5 rounded-xl border"><b>${x}</b><p class="mt-2 text-sm opacity-70">Member businesses will appear here after approval.</p><button class="mt-4 text-sm font-bold text-[#d4af37]">View listings →</button></div>`).join('');
+</script>
+</body></html>
